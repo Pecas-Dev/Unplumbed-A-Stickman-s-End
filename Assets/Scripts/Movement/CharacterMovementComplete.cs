@@ -9,6 +9,7 @@ public class CharacterMovementComplete : MonoBehaviour
 
     Rigidbody2D playerCompleteRigidody;
     BoxCollider2D playerCompleteFeetCollider;
+    CapsuleCollider2D playerCompleteCapsuleCollider;
     Animator playerCompleteAnimator;
 
 
@@ -21,6 +22,7 @@ public class CharacterMovementComplete : MonoBehaviour
         playerCompleteAnimator = GetComponent<Animator>();
         playerCompleteRigidody = GetComponent<Rigidbody2D>();
         playerCompleteFeetCollider = GetComponent<BoxCollider2D>();
+        playerCompleteCapsuleCollider = GetComponent<CapsuleCollider2D>();
     }
 
     void Update()
@@ -28,6 +30,7 @@ public class CharacterMovementComplete : MonoBehaviour
         MovePlayerComplete();
         JumpPlayerComplete();
         FlipCompleteCharacter();
+        Swinging();
     }
 
     void MovePlayerComplete()
@@ -43,6 +46,20 @@ public class CharacterMovementComplete : MonoBehaviour
         if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             playerCompleteAnimator.SetBool("isWalking", isMovingHorizontal);
+        }
+    }
+
+    void Swinging()
+    {
+        if(!playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")))
+        {
+            playerCompleteAnimator.SetBool("isSwing", false);
+            return;
+        }
+
+        if (playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")))
+        {
+            playerCompleteAnimator.SetBool("isSwing", true);
         }
     }
 
