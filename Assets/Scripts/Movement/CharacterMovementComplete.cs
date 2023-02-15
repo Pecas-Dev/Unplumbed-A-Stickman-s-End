@@ -5,17 +5,24 @@ using UnityEngine;
 public class CharacterMovementComplete : MonoBehaviour
 {
     [SerializeField] float playerSpeed = 10f;
-    [SerializeField] float jumpSpeed = 5f;
+    [SerializeField] float firstJumpForce = 5f;
+    [SerializeField] float secondJumpForce = 2f;
+    [SerializeField] float walkAnimationSpeed = 1f;
+    //[SerializeField] float jumpSpeed = 5f;
+
 
     Rigidbody2D playerCompleteRigidody;
     BoxCollider2D playerCompleteFeetCollider;
     CapsuleCollider2D playerCompleteCapsuleCollider;
     Animator playerCompleteAnimator;
 
+    SwingMovement swing;
 
     float xInputValue;
     float yInputValue;
 
+    bool hasJumped;
+    bool hasWallJumped;
 
     void Start()
     {
@@ -23,6 +30,7 @@ public class CharacterMovementComplete : MonoBehaviour
         playerCompleteRigidody = GetComponent<Rigidbody2D>();
         playerCompleteFeetCollider = GetComponent<BoxCollider2D>();
         playerCompleteCapsuleCollider = GetComponent<CapsuleCollider2D>();
+        swing = FindObjectOfType<SwingMovement>();
     }
 
     void Update()
@@ -46,18 +54,19 @@ public class CharacterMovementComplete : MonoBehaviour
         if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             playerCompleteAnimator.SetBool("isWalking", isMovingHorizontal);
+            playerCompleteAnimator.SetFloat("walkSpeed", walkAnimationSpeed);
         }
     }
 
     void Swinging()
     {
-        if(!playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")))
+        if (!playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")))
         {
             playerCompleteAnimator.SetBool("isSwing", false);
             return;
         }
 
-        if (playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")))
+        if (playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Swing")) && swing.attached)
         {
             playerCompleteAnimator.SetBool("isSwing", true);
         }
@@ -69,13 +78,13 @@ public class CharacterMovementComplete : MonoBehaviour
 
         if (isMovingHorizontal)
         {
-            transform.localScale = new Vector2(Mathf.Sign(playerCompleteRigidody.velocity.x) * 0.2f, 0.2f);
+            transform.localScale = new Vector2(Mathf.Sign(playerCompleteRigidody.velocity.x) * 0.3f, 0.3f);
         }
     }
 
     void JumpPlayerComplete()
     {
-        if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        /*if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -86,6 +95,30 @@ public class CharacterMovementComplete : MonoBehaviour
         if (!playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
         {
             return;
+        }*/
+
+        if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))
+        {
+            hasJumped = false;
+            hasWallJumped = false; 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!hasJumped)
+            {
+                playerCompleteRigidody.velocity = new Vector2(0, firstJumpForce);
+                hasJumped = true;
+                hasWallJumped = false; 
+            }
+            else if (playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) && !hasWallJumped && playerCompleteCapsuleCollider.IsTouchingLayers(LayerMask.GetMask("Wall")))
+            {
+                playerCompleteRigidody.velocity = new Vector2(0, secondJumpForce);
+                hasWallJumped = true; 
+            }
+        }
+
     }
+
+
 }
