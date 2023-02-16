@@ -5,8 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Rope
-  - Square1
-  - Square2
+  - Flag1
+  - Flag2
+  - Flag3
   layers:
   - Default
   - TransparentFX
