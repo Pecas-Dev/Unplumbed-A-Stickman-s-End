@@ -8,6 +8,7 @@ TagManager:
   - Flag1
   - Flag2
   - Flag3
+  - Collection
   layers:
   - Default
   - TransparentFX

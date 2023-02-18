@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Loading1.unity
     guid: dfd5bb61d100caf499469b0d805d4f49
   - enabled: 1
-    path: Assets/Scenes/ProtoVideoScene.unity
+    path: Assets/Scenes/FirstCinematic.unity
     guid: e7b51825d572cf04bb6118baf17c7580
   - enabled: 1
     path: Assets/Scenes/Level2.unity

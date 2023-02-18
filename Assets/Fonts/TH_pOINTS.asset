@@ -114,7 +114,7 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.452
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: TrashHand SDF
+  m_Name: TH_pOINTS
   m_EditorClassIdentifier: 
   hashCode: 1718220782
   material: {fileID: -890058190394799367}
