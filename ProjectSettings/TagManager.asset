@@ -9,6 +9,7 @@ TagManager:
   - Flag2
   - Flag3
   - Collection
+  - FireBall
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Swing
   - Background
   - Wall
-  - 
+  - FireBall
   - 
   - 
   - 

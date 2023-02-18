@@ -6,6 +6,7 @@ public class CollectibleManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text scoreText;
     public int itemsCollected = 0;
+    float sirvepls;
 
     void Awake()
     {
@@ -39,13 +40,13 @@ public class CollectibleManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Loading1")
+        if (scene.name == "Loading1" || scene.name == "MainMenu" || scene.name == "FirstCinematic")
         {
             gameObject.SetActive(false);
         }
         else
         {
-            if(scene.name == "Level2")
+            if(scene.name == "Level1" || scene.name == "Level2")
             {
                 gameObject.SetActive(true);
             }

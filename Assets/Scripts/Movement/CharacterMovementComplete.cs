@@ -72,6 +72,7 @@ public class CharacterMovementComplete : MonoBehaviour
         xInputValue = Input.GetAxis("Horizontal");
         yInputValue = Input.GetAxis("Vertical");
 
+
         Vector2 playerCompleteVelocity = new Vector2(xInputValue * playerSpeed, playerCompleteRigidody.velocity.y);
 
         if (!iswallJumping)

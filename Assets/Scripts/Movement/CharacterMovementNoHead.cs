@@ -21,6 +21,8 @@ public class CharacterMovementNoHead : MonoBehaviour
     float xInputValue;
     float yInputValue;
 
+    public bool canMove = true;
+
     //They don't do nothing, but somehow my code works with them /:
     bool hasJumped;
     bool hasWallJumped;
@@ -61,16 +63,19 @@ public class CharacterMovementNoHead : MonoBehaviour
 
     void MovePlayerComplete()
     {
-        xInputValue = Input.GetAxis("Horizontal");
-        yInputValue = Input.GetAxis("Vertical");
-
-        Vector2 playerCompleteVelocity = new Vector2(xInputValue * playerSpeed, playerCompleteRigidody.velocity.y);
-
-        if (!iswallJumping)
+        if (canMove) 
         {
-            playerCompleteRigidody.velocity = playerCompleteVelocity;
-        }
+            xInputValue = Input.GetAxis("Horizontal");
+            yInputValue = Input.GetAxis("Vertical");
 
+            Vector2 playerCompleteVelocity = new Vector2(xInputValue * playerSpeed, playerCompleteRigidody.velocity.y);
+
+            if (!iswallJumping)
+            {
+                playerCompleteRigidody.velocity = playerCompleteVelocity;
+            }
+        }
+        
 
         bool isMovingHorizontal = Mathf.Abs(playerCompleteRigidody.velocity.x) > Mathf.Epsilon;
 
