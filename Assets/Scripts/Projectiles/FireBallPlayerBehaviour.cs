@@ -10,7 +10,7 @@ public class FireBallPlayerBehaviour : MonoBehaviour
     BoxCollider2D boxFireballCollider;
     Rigidbody2D playerRigidbodyAddForce;
     Animator playerFireBallAnimator;
-    AudioSource hitAudio;
+    //AudioSource hitAudio;
 
     CharacterMovementNoHead characterMovementNoHead;
 
@@ -28,7 +28,7 @@ public class FireBallPlayerBehaviour : MonoBehaviour
         playerFireBallAnimator = GetComponent<Animator>();
         characterMovementNoHead = FindObjectOfType<CharacterMovementNoHead>();
         impulseSource = GetComponent<CinemachineImpulseSource>();
-        hitAudio = GetComponent<AudioSource>();
+       // hitAudio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -46,8 +46,8 @@ public class FireBallPlayerBehaviour : MonoBehaviour
             playerRigidbodyAddForce.sharedMaterial = null;
             playerFireBallAnimator.SetBool("isFireBall", true);
             gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-            impulseSource.GenerateImpulse(0.09f);
-            hitAudio.Play();
+            impulseSource.GenerateImpulse(0.05f);
+            //hitAudio.Play();
             playerRigidbodyAddForce.velocity = new Vector2(addForce.x, addForce.y);
             StartCoroutine(RestartSceneFireBall());
         }

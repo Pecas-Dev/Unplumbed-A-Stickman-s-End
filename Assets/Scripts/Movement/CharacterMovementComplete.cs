@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterMovementComplete : MonoBehaviour
@@ -14,6 +15,10 @@ public class CharacterMovementComplete : MonoBehaviour
     [Header("Wall")]
     [SerializeField] Transform wallCheck;
     [SerializeField] LayerMask wallLayer;
+
+    [Header("Arrow")]
+    [SerializeField] GameObject arrowObject;
+    [SerializeField] Transform arrowSpawnPoint;
 
 
     Rigidbody2D playerCompleteRigidody;
@@ -65,6 +70,7 @@ public class CharacterMovementComplete : MonoBehaviour
         }
 
         Swinging();
+        Bow();
     }
 
     void MovePlayerComplete()
@@ -92,6 +98,37 @@ public class CharacterMovementComplete : MonoBehaviour
         {
             playerCompleteAnimator.SetBool("isWalking", isMovingHorizontal);
             playerCompleteAnimator.SetFloat("walkSpeed", 0f);
+        }
+    }
+    void Bow()
+    {
+        if (playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")) || playerCompleteFeetCollider.IsTouchingLayers(LayerMask.GetMask("Wall")))
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                playerCompleteAnimator.SetBool("isBow", true);
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                playerCompleteAnimator.SetBool("isBow", false);
+                GameObject newArrow = Instantiate(arrowObject, arrowSpawnPoint.position, arrowSpawnPoint.rotation);
+                Arrow arrowScript = newArrow.GetComponent<Arrow>();
+
+                Vector2 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+
+                if (direction.x > 0)
+                {
+                    arrowScript.zRotation = 0f;
+                }
+                else if (direction.x < 0)
+                {
+                    arrowScript.zRotation = 180f;
+                }
+
+                arrowScript.zRotation = direction.x < 0 ? 180f : 0f;
+
+                arrowScript.Shoot(direction);
+            }
         }
     }
 

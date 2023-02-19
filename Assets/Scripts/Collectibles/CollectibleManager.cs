@@ -40,13 +40,16 @@ public class CollectibleManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (scene.name == "Loading1" || scene.name == "MainMenu" || scene.name == "FirstCinematic")
+        if (scene.name == "MainMenu" ||  scene.name == "Instructions" ||scene.name == "FirstCinematic" || scene.name == "Loading1" 
+            || scene.name == "TransitionLegs" || scene.name == "Loading2" || scene.name == "TransitionNoHead" 
+            || scene.name == "Loading3" || scene.name == "TransitionBodyComplete" || scene.name == "Loading4"
+            || scene.name == "LastCinematic" || scene.name == "TheEnd")
         {
             gameObject.SetActive(false);
         }
         else
         {
-            if(scene.name == "Level1" || scene.name == "Level2")
+            if(scene.name == "Level1" || scene.name == "Level2" || scene.name == "Level3") 
             {
                 gameObject.SetActive(true);
             }

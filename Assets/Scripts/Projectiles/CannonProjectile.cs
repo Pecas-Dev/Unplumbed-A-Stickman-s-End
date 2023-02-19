@@ -19,10 +19,8 @@ public class CannonProjectile : MonoBehaviour
 
     void Update()
     {
-        // Increment the timer
         timer += Time.deltaTime;
 
-        // Destroy the projectile if its lifetime has elapsed
         if (timer >= lifetime)
         {
             Destroy(gameObject);

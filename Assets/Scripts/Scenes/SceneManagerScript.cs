@@ -8,8 +8,17 @@ public class SceneManagerScript : MonoBehaviour
     public Animator transitionAnimator;
 
     float transitionTime = 1.5f;
+
     float loading1Time = 5f;
-    float video1Time = 24.15f;
+    float loading2Time = 4.25f;
+    float loading3Time = 3.42f;
+    float loading4Time = 4.69f;
+
+    float firstCinematicTime = 70.55f;
+    float lastCinematicTime = 11.25f;
+
+    float transitionsDuration = 3f;
+    float transitionsTryDuration = 1.4f;
 
     void Start()
     {
@@ -23,71 +32,179 @@ public class SceneManagerScript : MonoBehaviour
 
     void SceneNameCheck()
     {
-        if (SceneManager.GetActiveScene().name == "FirstCinematic") //4.3. Checks if it is in Video
+        if (SceneManager.GetActiveScene().name == "FirstCinematic")
         {
-            StartCoroutine(ToLevel1()); //5. Level2
+            StartCoroutine(Loading1());
         }
 
-        if (SceneManager.GetActiveScene().name == "Loading1") //3. Checks if it is in Loading1
+        if (SceneManager.GetActiveScene().name == "Loading1")
         {
-            StartCoroutine(LoadLevel2()); //4. Video1
+            StartCoroutine(ToLevel1());
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag1")
+        if (SceneManager.GetActiveScene().name == "TransitionLegs")
         {
-            StartCoroutine(Loading1()); //2. The way to access the Loading1 in Level1
+            StartCoroutine(Loading2());
         }
 
-        if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag2")
+        if (SceneManager.GetActiveScene().name == "Loading2")
         {
-            StartCoroutine(LoadEnd()); //6.1. The way to access the End in Level2
+            StartCoroutine(ToLevel2());
         }
-    }
 
-    IEnumerator ToLevel1()
-    {
-        transitionAnimator.SetTrigger("Start");
+        if (SceneManager.GetActiveScene().name == "TransitionNoHead")
+        {
+            StartCoroutine(Loading3());
+        }
 
-        yield return new WaitForSeconds(video1Time); //1. Time before Level1
+        if (SceneManager.GetActiveScene().name == "Loading3")
+        {
+            StartCoroutine(ToLevel3());
+        }
 
-        SceneManager.LoadScene("Level1"); //1.1. Starts Level1
+        if (SceneManager.GetActiveScene().name == "TransitionBodyComplete")
+        {
+            StartCoroutine(Loading4());
+        }
+
+        if (SceneManager.GetActiveScene().name == "Loading4")
+        {
+            StartCoroutine(ToEndVideo());
+        }
+
+        if (SceneManager.GetActiveScene().name == "LastCinematic")
+        {
+            StartCoroutine(LoadEnd());
+        }
     }
 
     IEnumerator Loading1()
     {
         transitionAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(transitionTime); //2.1. Time before moving to Loading1
+        yield return new WaitForSeconds(firstCinematicTime);
 
-        SceneManager.LoadScene("Loading1"); //2.2. Starts Loading1
+        SceneManager.LoadScene("Loading1");
     }
 
-    /*IEnumerator LoadVideo()
-    {
-        yield return new WaitForSeconds(loading1Time); //3.1.Time before Video1
-
-        SceneManager.LoadScene("ProtoVideoScene"); //4.2. Starts the video1
-    }*/
-
-    IEnumerator LoadLevel2()
+    IEnumerator ToLevel1()
     {
         transitionAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(loading1Time); //5.1. Time that takes before moving to Level2
+        yield return new WaitForSeconds(loading1Time);
 
-        SceneManager.LoadScene("Level2"); //5.2. Starts Level2
+        SceneManager.LoadScene("Level1");
     }
+
+    IEnumerator Transition1()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsTryDuration);
+
+        SceneManager.LoadScene("TransitionLegs");
+    }
+
+    IEnumerator Loading2()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsDuration);
+
+        SceneManager.LoadScene("Loading2");
+    }
+
+    IEnumerator ToLevel2()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(loading2Time);
+
+        SceneManager.LoadScene("Level2");
+    }
+
+    IEnumerator Transition2()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsTryDuration);
+
+        SceneManager.LoadScene("TransitionNoHead");
+    }
+
+    IEnumerator Loading3()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsDuration);
+
+        SceneManager.LoadScene("Loading3");
+    }
+
+    IEnumerator ToLevel3()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(loading3Time);
+
+        SceneManager.LoadScene("Level3");
+    }
+
+    IEnumerator Transition3()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsTryDuration);
+
+        SceneManager.LoadScene("TransitionBodyComplete");
+    }
+
+    IEnumerator Loading4()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(transitionsDuration);
+
+        SceneManager.LoadScene("Loading4");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag1")
+        {
+            //StartCoroutine(Transition1());
+            StartCoroutine(ToLevel2());
+        }
+
+        if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag2")
+        {
+            //StartCoroutine(Transition2());
+            StartCoroutine(ToLevel3());
+        }
+
+        if ((collision.gameObject.tag == "Player" && gameObject.tag == "Flag3") || (collision.gameObject.tag == "Arrow" && gameObject.tag == "Flag3"))
+        {
+            //StartCoroutine(Transition3());
+            StartCoroutine(LoadEnd());
+        }
+    }
+
+    IEnumerator ToEndVideo()
+    {
+        transitionAnimator.SetTrigger("Start");
+
+        yield return new WaitForSeconds(loading4Time);
+
+        SceneManager.LoadScene("LastCinematic");
+    }
+
 
     IEnumerator LoadEnd()
     {
         transitionAnimator.SetTrigger("Start");
 
-        yield return new WaitForSeconds(transitionTime); //6 Time that takes before moving to Level2
+        yield return new WaitForSeconds(/*lastCinematicTime*/ loading1Time);
 
-        SceneManager.LoadScene("TheEnd"); //6.2. Starts End
+        SceneManager.LoadScene("TheEnd");
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - Flag3
   - Collection
   - FireBall
+  - Arrow
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Background
   - Wall
   - FireBall
-  - 
+  - Arrow
   - 
   - 
   - 
