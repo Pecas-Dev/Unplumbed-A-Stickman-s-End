@@ -8,7 +8,7 @@ The game is a mix of a Platformer and Adventure genres, with a storyline centere
 
 ‏‏‎ ‎
 
-- **Controls**
+**Controls**
 
 - WASD or Arrow Keys to move (Only horizontal).
 - Jump with Spacebar - Double Jump, double Spacebar.
