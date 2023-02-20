@@ -38,12 +38,12 @@ The game is a mix of a Platformer and Adventure genres, with a storyline centere
 ![1](https://user-images.githubusercontent.com/91339821/219979035-8122acfe-599f-4d61-aab4-8976e07a0efd.png)
 
 
-2. Click in the "Unplumbed1.0 for Windows.zip" file.
+2. Click on the "Unplumbed1.0 for Windows.zip" file.
 
 ![2](https://user-images.githubusercontent.com/91339821/219979029-0b1b67cf-eaeb-4b6f-856f-70a87b514d76.png)
 
 
-3. Click the "Download" button, and wait for the file to be downloaded (79mb).
+3. Click on the "Download" button, and wait for the file to be downloaded (79mb).
 
 ![3](https://user-images.githubusercontent.com/91339821/219979021-a1605361-47de-4dbb-89cb-fef81d17af66.png)
 
@@ -52,9 +52,9 @@ The game is a mix of a Platformer and Adventure genres, with a storyline centere
 
 5. Extract the zip file.
 
-6. Once the zip file has extracted, click in the newly created folder with the same name as the zip folder.
+6. Once the zip file has extracted, click on the newly created folder with the same name as the zip folder.
 
-7. Click in the **Unplumbed** excecutable file.
+7. Click on the **Unplumbed** excecutable file.
 
 ![Picture1](https://user-images.githubusercontent.com/91339821/219979011-78c3069b-c890-4dbb-bcb2-fac1979f4afd.png)
 
@@ -64,7 +64,7 @@ The game is a mix of a Platformer and Adventure genres, with a storyline centere
 
 ![Info](https://user-images.githubusercontent.com/91339821/219980300-555d7b35-9efb-4233-b244-67e9d9fe0fb2.png)
 
-a) As you can see in the image, for fixing this click in "More information" ("Más información" for me since I have my computer in Spanish).
+a) As you can see in the image, for fixing this click on "More information" ("Más información" for me since I have my computer in Spanish).
 
 b) That will open a new option in that same window.
 
