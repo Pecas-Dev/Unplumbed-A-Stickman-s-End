@@ -80,7 +80,7 @@ _It goes without saying that you should only do this for files that you trust 10
 
 # Notes
 
-- **This game was a solo development, all the assets (excpet music), scripts (except for 2) and game design were made solely by me, which of course make me very proud.**
+- **This game was a solo development, all the assets (excpet music), scripts (except for 2) and game design were made solely by me, which of course makes me very proud.**
 - **The scripts that are not mine, are referenced in a comment in the scripts**
 - **The music is from Epidemic Sound, from which I hold the license to use them**
 
