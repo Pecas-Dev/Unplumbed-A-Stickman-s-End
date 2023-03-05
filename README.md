@@ -72,7 +72,7 @@ b) That will open a new option in that same window.
 
 c) Click on the button of "Execute Anyways" ("Ejecutar de todas formas").
 
-_It goes without saying that you should only do this for files that you trust 100% that are not harmful for your device_
+_It goes without saying that you should only do this for files that you trust 100% that are not harmful for your device._
 
 
 ‏‏‎ ‎
@@ -81,8 +81,8 @@ _It goes without saying that you should only do this for files that you trust 10
 # Notes
 
 - **This game was a solo development, all the assets (excpet music), scripts (except for 2) and game design were made solely by me, which of course makes me very proud.**
-- **The scripts that are not mine, are referenced in a comment in the scripts**
-- **The music is from Epidemic Sound, from which I hold the license to use them**
+- **The scripts that are not mine, are referenced in a comment in the scripts.**
+- **The music is from Epidemic Sound, from which I hold the license to use them.**
 
 
 
