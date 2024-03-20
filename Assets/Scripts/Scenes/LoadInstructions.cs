@@ -5,14 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class LoadInstructions : MonoBehaviour
 {
+    [Header("Game Objects")]
+    [SerializeField] GameObject mainMenuCanvas;
+    [SerializeField] GameObject instructionsCanvas;
+
+    void Awake()
+    {
+        mainMenuCanvas.SetActive(true);
+        instructionsCanvas.SetActive(false);
+    }
+
     public void Instructions()
     {
-        SceneManager.LoadScene("Instructions");
+        mainMenuCanvas.SetActive(false);
+        instructionsCanvas.SetActive(true);
     }
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        mainMenuCanvas.SetActive(true);
+        instructionsCanvas.SetActive(false);
     }
 
 }

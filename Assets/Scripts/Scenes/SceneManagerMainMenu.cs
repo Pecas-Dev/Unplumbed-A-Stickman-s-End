@@ -19,7 +19,7 @@ public class SceneManagerMainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        //SceneManager.LoadScene("FirstCinematic");
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("FirstCinematic");
+        //SceneManager.LoadScene("Level1");
     }
 }

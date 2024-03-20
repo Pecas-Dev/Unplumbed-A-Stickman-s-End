@@ -14,10 +14,10 @@ public class SceneManagerScript : MonoBehaviour
     float loading3Time = 3.42f;
     float loading4Time = 4.69f;
 
-    float firstCinematicTime = 70.55f;
+    float firstCinematicTime = 64.55f;
     float lastCinematicTime = 11.25f;
 
-    float transitionsDuration = 3f;
+    float transitionsDuration = 3.75f;
     float transitionsTryDuration = 1.4f;
 
     void Start()
@@ -77,6 +77,7 @@ public class SceneManagerScript : MonoBehaviour
             StartCoroutine(LoadEnd());
         }
     }
+
 
     IEnumerator Loading1()
     {
@@ -172,20 +173,20 @@ public class SceneManagerScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag1")
         {
-            //StartCoroutine(Transition1());
-            StartCoroutine(ToLevel2());
+            StartCoroutine(Transition1());
+            //StartCoroutine(ToLevel2());
         }
 
         if (collision.gameObject.tag == "Player" && gameObject.tag == "Flag2")
         {
-            //StartCoroutine(Transition2());
-            StartCoroutine(ToLevel3());
+            StartCoroutine(Transition2());
+            //StartCoroutine(ToLevel3());
         }
 
         if ((collision.gameObject.tag == "Player" && gameObject.tag == "Flag3") || (collision.gameObject.tag == "Arrow" && gameObject.tag == "Flag3"))
         {
-            //StartCoroutine(Transition3());
-            StartCoroutine(LoadEnd());
+            StartCoroutine(Transition3());
+            //StartCoroutine(LoadEnd());
         }
     }
 
